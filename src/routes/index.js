@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import IndexPage from '../pages';
+import Home from '../pages/home/home';
 import NoMatchPage from '../pages/noMatch';
 
 export default function RootRoute() {
@@ -8,7 +8,7 @@ export default function RootRoute() {
     <BrowserRouter>
       <Routes>
         {/* 기본 루트페이지 */}
-        <Route path="/" element={<IndexPage />} key="index" />
+        <Route path="/" element={<Home />} key="home" />
 
         {/* 추가되는 페이지 */}
         {/* <Route path="/home" element={<HomePage />}  key="home" />

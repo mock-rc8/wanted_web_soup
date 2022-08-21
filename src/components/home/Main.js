@@ -12,5 +12,5 @@ export default function HomeMain(){
 const MainPageWrapper=styled.div`
     padding-top:25px;
     background-color:#fff;
-    
+
 `

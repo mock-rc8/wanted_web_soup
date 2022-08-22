@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import MainHeader from "../../components/common/header";
 import HomeMain from "../../components/home/Main";
 
@@ -8,7 +7,7 @@ export default function Home(){
         <div>
 
             <MainHeader></MainHeader>
-
+            <div style={{height:"50px"}}></div>
             <HomeMain></HomeMain>
 
         </div>

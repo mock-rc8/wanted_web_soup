@@ -6,15 +6,20 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderList from "./SliderList";
 import ContentCard from "./ContentCard";
 import { Link } from "react-router-dom";
+import SectionDivider from "../common/divider";
+import SectionDiv from "./SectionDiv";
 
 
 export default function HomeMain(){
     var settings={
-        dots:true,
+        className:"center",
+        centerPadding:"51px",
+        centerMode:true,
+        dots:false,
         infinite:true,
-        slideToShow:3,
-        slideToScroll:1,
-        autoplay:true,
+        slidesToShow:1.7,
+        slidesToScroll:1,
+        autoplay:false,
         autoplaySpeed:9000,
         pauseOnHover:true,
         prevArrow:(
@@ -59,8 +64,10 @@ export default function HomeMain(){
             </Btn>
         )
     };
+
     return(
         <MainPageWrapper>
+
             <TopBanner>
                 <StyledSlider {...settings}>
                     <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1789%2F7ffde204.jpg&w=1060&q=100"></SliderList>
@@ -77,7 +84,7 @@ export default function HomeMain(){
             </TopBanner>
 
             <ContentSection>
-                <div className="section-wrpper">
+                <div className="section-wrapper">
 
                     <SectionTitle>
                         <div className="title-wrapper">
@@ -178,15 +185,31 @@ export default function HomeMain(){
                 </div>
             </CreaterBanner>
 
+            <ContentSection>
+                <SectionDiv 
+                title={"3분만에 읽는 Wanted+ 아티클"} type={"아티클"}
+                ></SectionDiv>
+            </ContentSection>
+
+            <SectionDivider></SectionDivider>
+
+            <ContentSection>
+                <SectionDiv
+                title={"직장인을 위한 Wanted+ VOD"} type={"VOD"}
+                ></SectionDiv>
+            </ContentSection>
+
         </MainPageWrapper>
     )
 }
 
+//styled-components
 const MainPageWrapper=styled.div`
     padding-top:25px;
     background-color:#fff;
 `
 
+//TopBanner
 const TopBanner=styled.div`
     position:relative;
     overflow:hidden;
@@ -195,7 +218,6 @@ const TopBanner=styled.div`
 `
 const StyledSlider=styled(Slider)`
     margin-bottom:0;
-    
     .slick-prev::before,
     .slick-next::before{
         opacity:0;
@@ -207,6 +229,7 @@ const StyledSlider=styled(Slider)`
     .slick-next{
         right:300px;
     }
+
     .slick-list{
         padding:0 50px;
 
@@ -216,9 +239,14 @@ const StyledSlider=styled(Slider)`
 
     }
     .slick-slide{
-        width:1060px;
+        width:100%;
         padding:0 12px;
         box-sizing:content-box;
+    }
+    .slick-slide>div{
+        position:relative;
+        width:1060px;
+        margin:0
     }
 `
 const Btn=styled.button`
@@ -236,19 +264,20 @@ const Btn=styled.button`
     z-index: 20;
 `
 
+//ContentSection
 const ContentSection=styled.section`
     position:relative;
     scroll-margin-top:4px;
     padding:60px 0;
 
-    .section-wrpper{
+    .section-wrapper{
         max-width:1060px;
         width:87.72%;
         margin:0 auto;
-
     }
-
 `
+
+//ContentSection-career
 const SectionTitle=styled.div`
     text-align:center;
     .title-wrapper{
@@ -432,6 +461,7 @@ const SectionMoreBtn=styled.div`
 
 `
 
+//CreaterBanner
 const CreaterBanner=styled.div`
     display:flex;
     height:110px;

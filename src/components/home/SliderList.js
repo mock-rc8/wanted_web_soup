@@ -35,6 +35,7 @@ const SliderItem=styled.div`
 
     display:inline-block;
     height:299.969px;
+    width:1060px;
 
     .slider-img{
         position:relative;

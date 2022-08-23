@@ -1,4 +1,4 @@
-import React from"react";
+import React, { useEffect, useState } from"react";
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,13 +7,29 @@ import { Link } from "react-router-dom";
 import ContentSliderList from "./ContentSliderList";
 
 export default function SectionDiv(props){
-    var sectionContentSettings={
+    const event="이벤트";
+    const type=props.type;
+
+    const [isType, setIsType]=useState(false);
+
+    const ContentSettings={
         dots:false,
         infinite:true,
         slidesToShow:4,
         slidesToScroll:4,
         autoplay:false
     }
+
+    const EventSettings={
+        dots:false,
+        infinite:true,
+        slidesToShow:2,
+        slidesToScroll:2,
+        autoplay:false
+    }
+    useEffect(()=>{
+        {type==event?setIsType(true):setIsType(false)};
+    })
 
     return(
         <SectionWrapper>
@@ -35,15 +51,25 @@ export default function SectionDiv(props){
                 <SectionNext></SectionNext>
             </SectionHeader>
 
-            <SectionContentList>
-                <ContentSlider {...sectionContentSettings}>
-                    <ContentSliderList></ContentSliderList>
-                    <ContentSliderList></ContentSliderList>
-                    <ContentSliderList></ContentSliderList>
-                    <ContentSliderList></ContentSliderList>
-                    <ContentSliderList></ContentSliderList>
+            <SectionContentList style={isType?{display:"none"}:{display:"block"}}>
+                <ContentSlider {...ContentSettings}>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
                 </ContentSlider>
             </SectionContentList>
+
+            <SectionEventList style={isType?{display:"block"}:{display:"none"}}> 
+                <ContentSlider {...EventSettings}>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
+                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
+                </ContentSlider>
+            </SectionEventList>
 
         </SectionWrapper>
     )
@@ -97,6 +123,10 @@ const SectionHeader=styled.div`
 const SectionContentList=styled.ul`
     margin:-10px;
 `
+const SectionEventList=styled.div`
+    margin:-8px;
+
+`
 const ContentSlider=styled(Slider)`
     margin-bottom:10px;
 
@@ -112,7 +142,6 @@ const ContentSlider=styled(Slider)`
         width:270px;
     }
 `
-
 const B=styled.button`
     position:relative;
     width:36px;

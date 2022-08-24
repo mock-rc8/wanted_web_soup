@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeader from "../../components/common/header";
+import MainHeader from "../../components/common/header/header";
 import HomeMain from "../../components/home/Main";
 import { useRecoilValue } from 'recoil';
 import LoginModal from "../../components/login/LoginModal";

@@ -1,8 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import {useRecoilState} from "recoil";
+import { popupRecoilState } from "../../atoms/Popup";
 
 export default function MainHeader(){
+    const [popup,setPopup]=useRecoilState(popupRecoilState);
+
+    const handlePopup=()=>{
+        setPopup(!popup);
+    }
+
     return(
         <NavPageWrapper>
             <div className="mainBar">
@@ -70,7 +78,7 @@ export default function MainHeader(){
                                 </button>
                             </li>
                             <li>
-                                <button>
+                                <button onClick={handlePopup}>
                                     회원가입/로그인
                                 </button>
                             </li>

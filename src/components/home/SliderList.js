@@ -11,8 +11,8 @@ export default function SliderList(props){
                 <img src={props.src} className="img" alt="sliderimg" width="1060px" height="300px"></img>
             </div>
             <div className="slider-info">
-                <h2>합격하는 마케터들의 3가지 공통점</h2>
-                <h3>자소서 삼백 번 고쳐도 서류 합격률이 낮다면!</h3>
+                <h2>프리온보딩 백엔드 코스</h2>
+                <h3>기업의 실제 채용 과제로 구성된 커리큘럼</h3>
                 <div className="slider-divider"></div>
                 <Link to='/'>
                     <span className="link-btn-container">

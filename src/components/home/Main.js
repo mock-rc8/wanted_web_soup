@@ -23,7 +23,7 @@ export default function HomeMain(){
         slidesToShow:1.7,
         slidesToScroll:1,
         autoplay:false,
-        autoplaySpeed:9000,
+        autoplaySpeed:5000,
         pauseOnHover:true,
         prevArrow:(
             <Btn>

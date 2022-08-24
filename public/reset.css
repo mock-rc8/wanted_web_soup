@@ -59,8 +59,14 @@ button{
 	padding:0;
 	border:0;
 	background: none;
+	cursor: pointer;
 }
 a{
 	text-decoration: none;
 	cursor: pointer;
+}
+.fixed{
+	overflow: hidden;
+	position: fixed;
+	inset: 0px;
 }

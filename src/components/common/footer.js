@@ -71,7 +71,7 @@ export default function Footer(){
     )
 }
 
-const FooterWrapper=styled.div`
+const FooterWrapper=styled.footer`
     padding:18px 0 65px;
     background-color:#fff;
     border-top:1px solid #ececec;

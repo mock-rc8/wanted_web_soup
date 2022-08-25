@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SliderList from "./SliderList";
 import ContentCard from "./ContentCard";
 import { Link } from "react-router-dom";
 import SectionDivider from "../common/divider";
@@ -11,80 +10,16 @@ import SectionDiv from "./SectionDiv";
 import BannerBtn from "../common/bannerBtn";
 import HireBannerItem from "./HireBannerItem";
 import Footer from "../common/footer";
+import SliderBanner from "../common/SliderBanner";
+import QuestionBtn from "../common/questionBtn";
 
 
 export default function HomeMain(){
-    var settings={
-        className:"center",
-        centerPadding:"51px",
-        centerMode:true,
-        dots:false,
-        infinite:true,
-        slidesToShow:1.7,
-        slidesToScroll:1,
-        autoplay:false,
-        autoplaySpeed:5000,
-        pauseOnHover:true,
-        prevArrow:(
-            <Btn>
-                <span style={{
-                    width:"100%",
-                    display:"flex",
-                    alignItems:"center",
-                    justifyContent:"center"
-                }}>
-                    <svg viewBox="0 0 18 18" style={{
-                        width:"1em",
-                        height:"1em",
-                        display:"inline-block",
-                        fill:"#333",
-                        flexShrink:"0"
-                    }}>
-                        <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
-                    </svg>
-                </span>
-            </Btn>
-
-        ),
-        nextArrow:(
-            <Btn>
-                <span style={{
-                    width:"100%",
-                    display:"flex",
-                    alignItems:"center",
-                    justifyContent:"center"
-                }}>
-                    <svg viewBox="0 0 18 18" style={{
-                        width:"1em",
-                        height:"1em",
-                        display:"inline-block",
-                        fill:"#333",
-                        flexShrink:"0"
-                    }}>
-                        <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
-                    </svg>
-                </span>
-            </Btn>
-        )
-    };
 
     return(
         <MainPageWrapper>
 
-            <TopBanner>
-                <StyledSlider {...settings}>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1789%2F7ffde204.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1780%2Fa307601f.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1790%2Fd4b41ce4.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1776%2F89e208e3.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1786%2F2441afc4.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1789%2F7ffde204.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1780%2Fa307601f.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1790%2Fd4b41ce4.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1776%2F89e208e3.jpg&w=1060&q=100"></SliderList>
-                    <SliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2F1776%2F89e208e3.jpg&w=1060&q=100"></SliderList>
-                </StyledSlider>
-            </TopBanner>
+            <SliderBanner></SliderBanner>
 
             <ContentSection>
                 <div className="section-wrapper">
@@ -92,13 +27,7 @@ export default function HomeMain(){
                     <SectionTitle>
                         <div className="title-wrapper">
                             <h2>나에게 필요한 커리어 인사이트</h2>
-                            <button>
-                                <svg width="24" height="24" viewBox="0 0 17 17" fill="none" fillRule="evenodd">
-                                    <path stroke="#999" d="M9.421 13.334c-.736.277-1.535.43-2.368.43-3.706 0-6.71-3.005-6.71-6.711 0-3.707 3.004-6.71 6.71-6.71 1.853 0 3.53.75 4.745 1.965 1.214 1.214 1.965 2.892 1.965 4.745 0 1.853-.75 3.53-1.965 4.745"></path>
-                                    <path stroke="#999" d="M6.382 10.408c0-.371.3-.671.67-.671.371 0 .672.3.672.67 0 .372-.3.672-.671.672-.37 0-.671-.3-.671-.671"></path>
-                                    <path stroke="#999" d="M5.04 5.655c0-1.08.901-1.958 2.013-1.958 1.11 0 2.013.877 2.013 1.958 0 1.08-1.007 1.957-2.013 1.957v.783"></path>
-                                </svg>
-                            </button>
+                            <QuestionBtn></QuestionBtn>
                         </div>
                     </SectionTitle>
 

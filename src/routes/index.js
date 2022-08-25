@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from '../pages/home/home';
+import Jobsfeed from '../pages/jobsfeed/jobsfeed';
 import NoMatchPage from '../pages/noMatch';
 
 export default function RootRoute() {
@@ -11,8 +12,8 @@ export default function RootRoute() {
         <Route path="/" element={<Home />} key="home" />
 
         {/* 추가되는 페이지 */}
-        {/* <Route path="/home" element={<HomePage />}  key="home" />
-        <Route path="/login" element={<LoginPage />} key="login" /> */}
+        <Route path="/jobsfeed" element={<Jobsfeed />}  key="jobsfeed"/>
+
 
         {/* 경로가 유효하지 않을 때 */}
         <Route path="*" element={<NoMatchPage />} key="noMatch" />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import {useRecoilState, useRecoilValue} from "recoil";
+import {useRecoilState} from "recoil";
 import { popupRecoilState } from "../../../atoms/Popup";
 import CategoryItem from "./categoryItem";
 import SubCategoryItem from "./subcategoryItem";
@@ -147,7 +147,7 @@ export default function MainHeader(){
                     </MainBarLeft>
                     <MainBarCenter>
                         <li className="cartegoryList">
-                            <Link to='/' className="link">채용</Link>
+                            <Link to='/jobsfeed' className="link">채용</Link>
                         </li>
                         <li className="cartegoryList">
                             <Link to='/' className="link">이벤트</Link>

@@ -9,6 +9,8 @@ import BannerBtn from "../common/bannerBtn";
 import MatchedList from "./MatchedList";
 import ContentBanner from "./ContentBanner";
 import LinkNav from "./LinkNav";
+import SectionDiv from "../home/SectionDiv";
+import CaompanyTagSection from "./CompanyTagSection";
 
 export default function JobsfeedMain(){
     return(
@@ -16,13 +18,16 @@ export default function JobsfeedMain(){
 
             <SliderBanner></SliderBanner>
 
-            <BannerBtn></BannerBtn>
+            <BannerBtn page="job"></BannerBtn>
 
             <MatchedList></MatchedList>
 
             <ContentBanner></ContentBanner>
 
             <LinkNav></LinkNav>
+
+            <CaompanyTagSection></CaompanyTagSection>
+
 
         </MainPageWrapper>
     )

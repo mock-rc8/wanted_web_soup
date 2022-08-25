@@ -5,12 +5,13 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ContentSliderList from "./ContentSliderList";
+import { SectionPrev } from "../common/ArrowButton";
+import { SectionNext } from "../common/ArrowButton";
 
 export default function SectionDiv(props){
-    const event="이벤트";
-    const type=props.type;
+    const num=props.contentNum;
 
-    const [isType, setIsType]=useState(false);
+    const [isNum, setIsNum]=useState(false);
 
     const ContentSettings={
         dots:false,
@@ -20,7 +21,7 @@ export default function SectionDiv(props){
         autoplay:false
     }
 
-    const EventSettings={
+    const TwoSettings={
         dots:false,
         infinite:true,
         slidesToShow:2,
@@ -28,7 +29,7 @@ export default function SectionDiv(props){
         autoplay:false
     }
     useEffect(()=>{
-        {type==event?setIsType(true):setIsType(false)};
+        {num==2?setIsNum(true):setIsNum(false)};
     })
 
     return(
@@ -51,7 +52,7 @@ export default function SectionDiv(props){
                 <SectionNext></SectionNext>
             </SectionHeader>
 
-            <SectionContentList style={isType?{display:"none"}:{display:"block"}}>
+            <SectionContentList style={isNum?{display:"none"}:{display:"block"}}>
                 <ContentSlider {...ContentSettings}>
                     <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
                     <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
@@ -61,8 +62,8 @@ export default function SectionDiv(props){
                 </ContentSlider>
             </SectionContentList>
 
-            <SectionEventList style={isType?{display:"block"}:{display:"none"}}> 
-                <ContentSlider {...EventSettings}>
+            <SectionEventList style={isNum?{display:"block"}:{display:"none"}}> 
+                <ContentSlider {...TwoSettings}>
                     <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
                     <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
                     <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
@@ -142,58 +143,3 @@ const ContentSlider=styled(Slider)`
         width:270px;
     }
 `
-const B=styled.button`
-    position:relative;
-    width:36px;
-    height:36px;
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    border:1px solid #e1e2e3;
-    border-radius:50%;
-    background-color:#fff;
-    box-shadow:0 2px 2px 0 rgb(0 0 0 / 5%);
-    font-size:16px;
-    color:#767676 ;  
-    span{
-        margin-left:0;
-        width:100%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-    svg{
-        fill:currentColor;
-        width:1em;
-        height:1em;
-        flex-shrink:0;
-        display:inline-block;
-    }
-`
-const SectionPrev=()=>{
-    return(
-        <B>
-            <span>
-                <svg viewBox="0 0 18 18">
-                    <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
-                </svg>
-
-            </span>
-
-        </B>
-    )
-    
-
-}
-const SectionNext=()=>{
-    return(
-        <B>
-            <span>
-                <svg viewBox="0 0 18 18">
-                    <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
-                </svg>
-            </span>
-
-        </B>
-    )
-}

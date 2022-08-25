@@ -43,7 +43,7 @@ export default function MatchedList(){
 const MatchedWrapper=styled.div`
     width:100%;
     max-width:100vw;
-    background:#f4f8fv;
+    background: #f4f8fb;
     background-image:url(https://wanted-dev.static.wanted.co.kr/banner/Jobsfeed_ai_banner.png);
     background-repeat:no-repeat;
     background-size:cover;

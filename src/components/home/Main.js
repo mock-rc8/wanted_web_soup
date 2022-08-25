@@ -12,6 +12,8 @@ import HireBannerItem from "./HireBannerItem";
 import Footer from "../common/footer";
 import SliderBanner from "../common/SliderBanner";
 import QuestionBtn from "../common/questionBtn";
+import { ContentSection } from "../styled";
+import { SectionWrapper } from "../styled";
 
 
 export default function HomeMain(){
@@ -22,7 +24,7 @@ export default function HomeMain(){
             <SliderBanner></SliderBanner>
 
             <ContentSection>
-                <div className="section-wrapper">
+                <SectionWrapper>
 
                     <SectionTitle>
                         <div className="title-wrapper">
@@ -98,7 +100,7 @@ export default function HomeMain(){
                         </button>
                     </SectionMoreBtn>
 
-                </div>
+                </SectionWrapper>
             </ContentSection>
 
             <CreaterBanner>
@@ -135,7 +137,7 @@ export default function HomeMain(){
 
             <ContentSection>
                 <SectionDiv
-                title={"커리어 성장을 위한 맞춤 이벤트"} type={"이벤트"}
+                title={"커리어 성장을 위한 맞춤 이벤트"} type={"이벤트"} contentNum={2}
                 ></SectionDiv>
             </ContentSection>
 
@@ -174,7 +176,7 @@ export default function HomeMain(){
             </SectionBanner>
 
             <ContentSection>
-                <div className="section-wrapper">
+                <SectionWrapper>
                     <HireBannerHeader>
                         <div className="header-title">
                             <div className="title-wrapper">
@@ -201,7 +203,7 @@ export default function HomeMain(){
                         d="M10.667 21.667a3.67 3.67 0 0 1 3.528 2.666H28a1 1 0 0 1 0 2l-13.805.001a3.67 3.67 0 0 1-7.057 0H4a1 1 0 1 1 0-2h3.138a3.67 3.67 0 0 1 3.529-2.667zm0 2a1.668 1.668 0 0 0 0 3.333 1.668 1.668 0 0 0 0-3.333zm10.666-11.334A3.67 3.67 0 0 1 24.862 15H28a1 1 0 0 1 0 2h-3.138a3.67 3.67 0 0 1-7.057 0H4a1 1 0 0 1 0-2h13.805a3.67 3.67 0 0 1 3.528-2.667zm0 2a1.668 1.668 0 0 0 0 3.334 1.668 1.668 0 0 0 0-3.334zM10.667 3a3.67 3.67 0 0 1 3.528 2.666H28a1 1 0 0 1 0 2H14.195a3.67 3.67 0 0 1-7.057 0H4a1 1 0 1 1 0-2h3.138A3.67 3.67 0 0 1 10.667 3zm0 2a1.668 1.668 0 0 0 0 3.333 1.668 1.668 0 0 0 0-3.333z"
                         ></HireBannerItem>
                     </HireBannerContent>
-                </div>
+                </SectionWrapper>
             </ContentSection>
 
             <Footer></Footer>
@@ -253,33 +255,6 @@ const StyledSlider=styled(Slider)`
         position:relative;
         width:1060px;
         margin:0
-    }
-`
-const Btn=styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 120px;
-    width: 30px;
-    height: 60px;
-    opacity: .5;
-    border-radius: 15px;
-    background-color: #fff;
-    font-size: 16px;
-    z-index: 20;
-`
-
-//ContentSection
-const ContentSection=styled.section`
-    position:relative;
-    scroll-margin-top:4px;
-    padding:60px 0;
-
-    .section-wrapper{
-        max-width:1060px;
-        width:87.72%;
-        margin:0 auto;
     }
 `
 

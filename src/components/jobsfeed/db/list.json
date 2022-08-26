@@ -1,0 +1,76 @@
+{
+    "연봉이 최고의 복지":[
+        {
+            "imgUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31%2F5acfjh1tzathepsb__1080_790.jpg&w=520&q=100",
+            "title":"엔비티(NBT)",
+            "tag":"IT,컨텐츠",
+            "profileUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fwdes%2F0_4.39d92fb1.jpg&w=42&q=100"
+        },
+        {
+            "imgUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F206%2F14421_2_0.60a7fde2__1080_790.jpg&w=520&q=100",
+            "title":"브이터치(VTouch)",
+            "tag":"IT,컨텐츠",
+            "profileUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fwdes%2F0_4_ab8663cf-a42a-4612-8955-8a43bcc3958a.jpg&w=42&q=100"
+        }
+    ],
+    "50인 이상":[
+        {
+            "imgUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F8369%2Ft0cq4otdj2qmyye5__1080_790.png&w=520&q=100",
+            "title":"교보문고",
+            "tag":"판매, 유통",
+            "profileUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fwdes%2F0_4.a3bfc5b8.jpg&w=42&q=100"
+        },
+        {
+            "imgUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F3801%2Fdkn0iudmk3tnbjvo__1080_790.jpg&w=520&q=100",
+            "title":"인터파크",
+            "tag":"IT,컨텐츠",
+            "profileUrl":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fwdes%2F0_4.1ad26f2e.jpg&w=42&q=100"
+        }
+    ],
+    "테마로 모아보는 요즘 채용":[
+        {
+            "src":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2Fthemes%2F262_b097b9cb.png&w=520&q=100",
+            "title":"재택/원격 근무가 자유로운 기업",
+            "subtitle":"장소에 구애받지 않고 효율적으로 일하는 기업을 소개합니다."
+        },
+        {
+            "src":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fbanners%2Fthemes%2F261_8ecbc1ef.png&w=520&q=100",
+            "title":"주말 3일! 주 4일 근무 기업",
+            "subtitle":"일과 삶의 균형을 찾을 수 있는 기업을 소개합니다."
+        }
+    ],
+    "요즘 뜨는 포지션":[
+        {
+            "plusinfo":"f",
+            "position":"[ONiON] Web/App Hybrid Engineer (Sr)",
+            "name":"이지식스(엠블)",
+            "location":"한국·서울",
+            "reward":"채용보상금 1,000,000원",
+            "url":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4577%2Fxgczowftiwmedkkc__400_400.jpg&w=400&q=75"
+        },
+        {
+            "plusinfo":"f",
+            "position":"(모던하우스) 온라인 상품개발 MD",
+            "name":"모던하우스(MH&Co.)",
+            "location":"한국·서울",
+            "reward":"채용보상금 1,000,000원",
+            "url":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F5380%2Fvd2jueavxoxdrb5l__400_400.jpg&w=400&q=75"
+        },
+        {
+            "plusinfo":"t",
+            "position":"QA Lead",
+            "name":"화해(버드뷰)",
+            "location":"한국·서울",
+            "reward":"채용보상금 1,000,000원",
+            "url":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F216%2Fpdgjch6eg5ajfdfm__400_400.jpg&w=400&q=75"
+        },
+        {
+            "plusinfo":"f",
+            "position":"[미니창고 다락] 영업 관리 매니저",
+            "name":"세컨신드롬",
+            "location":"한국·서울",
+            "reward":"채용보상금 1,000,000원",
+            "url":"https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F7111%2Fydhlckrrli3dyd3i__400_400.jpg&w=400&q=75"
+        }
+    ]
+}

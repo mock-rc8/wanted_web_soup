@@ -1,142 +1,166 @@
-import React, { useEffect, useState } from"react";
+import React from"react";
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { SectionWrapper } from "../styled";
-import { SectionNext, SectionPrev } from "../common/ArrowButton";
+import { SectionWrapper, SectionContent} from "../styled";
+import dummy from './db/list.json';
+import HeaderWrapper from "./HeaderWrapper";
 
 export default function CaompanyTagSection(){
+
     return(
         <SectionWrapper>
-            <ContentList>
-                <header className="headerWrapper">
-                    <div className="header-titleWrapper">
-                        <h2 className="title">
-                            <Link to='/'>
-                                #재택근무
-                                <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Ftags%2F5d873f3a-9f6e-11ec-b909-0242ac120002.png&w=75&q=75"></img>
-                            </Link>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;회사를 소개합니다</span>
-                        </h2>
+            <ListItems 
+            title="연봉이 최고의 복지"
+            src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Ftags%2F634f02e0-9f6e-11ec-b909-0242ac120002.png&w=75&q=75"
+            ></ListItems>
 
-                        <div className="subtitle">
-                            <Link to='/'>
-                                <span className="subtitle-content">포지션으로 더보기</span>
-                                <span className="subtitle-icon">
-                                    <svg viewBox="0 0 6 10" width="6" height="10">
-                                        <path d="M0.34467 8.24802C0.0517767 8.51161 0.0517767 8.93898 0.34467 9.20257C0.637563 9.46617 1.11244 9.46617 1.40533 9.20257L5.65533 5.37773C5.94822 5.11414 5.94822 4.68677 5.65533 4.42317L1.40533 0.59833C1.11244 0.334736 0.637563 0.334736 0.34467 0.59833C0.0517767 0.861923 0.0517767 1.28929 0.34467 1.55288L4.06434 4.90045L0.34467 8.24802Z"></path>
-                                    </svg>
-                                </span>
-                            </Link>
-                        </div>
+            <ListItems 
+            title="50인 이상"
+            src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Ftags%2F4cec3244-c524-11ec-901c-acde48001122.png&w=75&q=75"
+            ></ListItems>
 
-                    </div>
-
-                    <div className="header-nav">
-                        <SectionPrev className="arrowBtn"></SectionPrev>
-                        <SectionNext className="arrowBtn"></SectionNext>
-                    </div>
-
-                </header>
-
-                <div className="sectionContent">
-                    
-                </div>
-            </ContentList>
         </SectionWrapper>
+    )
+}
+
+const ListItems=(props)=>{
+    const TwoSettings={
+        dots:false,
+        infinite:true,
+        slidesToShow:2,
+        slidesToScroll:2,
+        autoplay:false
+    }
+
+    const title=props.title;
+
+    const list=dummy[title];
+
+    return(
+        <ContentList>
+            <HeaderWrapper title={props.title} src={props.src}></HeaderWrapper>
+
+            <SectionContent>
+                <StyledSlide {...TwoSettings}>
+                    {
+                        list.map((item)=>{
+                            return<SliderItem 
+                            imgUrl={item.imgUrl} title={item.title} tag={item.tag} profileUrl={item.profileUrl}></SliderItem>
+                        })
+                    }
+                </StyledSlide>
+            </SectionContent>
+
+        </ContentList>
+    )
+}
+
+const SliderItem=(props)=>{
+    const style={
+        backgroundImage:`url(${props.imgUrl})`
+    }
+    const profileStyle={
+        backgroundImage:`url(${props.profileUrl})`
+    }
+
+    return(
+        <CardContainer>
+            <Link to='/'>
+                <div className="card-img" style={style}></div>
+                <div className="card-info">
+                    <div className="info-container">
+                        <div className="info-profile" style={profileStyle}></div>
+                        <div className="info-body">
+                            <p className="body-title">{props.title}</p>
+                            <p className="body-tag">{props.tag}</p>
+                        </div>
+                    </div>
+                    <button className="info-btn">
+                        <span>팔로우</span>
+                    </button>
+                </div>
+            </Link>
+        </CardContainer>
     )
 }
 
 const ContentList=styled.div`
     margin-bottom:90px;
+`
+const StyledSlide=styled(Slider)`
+    margin-bottom:30px;
+`
 
-    .headerWrapper{
-        position:relative;
-        margin-bottom:40px;
+const CardContainer=styled.div`
+    padding:10px;
 
+    .card-img{
+        padding-bottom:52%;
+        background-size:cover;
+        background-position:50%;
+        border-radius:4px;
+        box-shadow:inset 0 0 0 1px grb(0 0 0/10%);
     }
-    .header-titleWrapper{
+
+    .card-info{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        margin-top:17px;
+    }
+    .info-container{
+        display:flex;
+        flex:1 0;
+    }
+    .info-profile{
+        width:42px;
+        height:42px;
+        flex-grow:0;
+        flex-shrink:0;
+        box-shadow:inset 0 0 0 1px rgb(0 0 0/10%);
+        background-size:contain;
+        background-position:50%;
+        margin-right:12px;
+        background-repaeat:no-repeat;
+    }
+    .info-body{
         display:flex;
         flex-direction:column;
-        justify-content:center;
-        height:51px;
-        padding-top:36px;
-    }
-
-    .title{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        margin-bottom:9px;
-        font-size:22px;
-        font-weight:700;
-        line-height:24px;
-        color:#333;
-        text-align:center;
-    }
-    .title>a{
-        position:relative;
-    }
-    .title>a>img{
-        position:absolute;
-        top:-2px;
-        width:24px;
-        height:24px;
-        margin:0 8px 0 4px;
-    }
-    .title>span{
-        font-weight:400;
-    }
-    .subtitle{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        width:100%;
-    }
-    .subtitle>a{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-    
-    .subtitle-content{
-        margin-top:2px;
-        margin-right:6px;
-        font-weight:500;
-        line-height:18px;
-        font-size:15px;
-        color:#767676;
-    }
-    .subtitle-icon{
-        width:6px;
-        height:10px;
-        padding:0;
-        margin:0;
-        color:#767676;
-    }
-    .subtitle-icon>svg{
-        fill:#767676;
-        position:absolute;
-    }
-    
-
-
-
-    .header-nav{
-        position:absolute;
-        top:50%;
-        transform:translateY(-55%);
-        width:100%;
-        display:flex;
         justify-content:space-between;
     }
+    .body-title{
+        font-size:18px;
+        font-weight:700;
+        color:#333;
+    }
+    .body-tag{
+        font-size:14px;
+        font-weiht:500;
+        color:#999;
+    }
 
-
-
-    .sectionContent{
-        margin-10px;
-
+    .info-btn{
+        border:1px solid #e1e2e3;
+        padding:12px 25.2px 11px;
+        line-height:1;
+        height:40px;
+        font-size:15px;
+        color:#36f;
+        background-color;
+        position:relative;
+        display:inline-block;
+        align-items:center;
+        justify-content:center;
+        vertical-align:middle;
+        min-width:64px;
+        border-radius:25px;
+        font-weight:700;
+    }
+    .info-btn>span{
+        width:100%;
     }
 `
+

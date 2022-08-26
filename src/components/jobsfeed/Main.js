@@ -9,8 +9,10 @@ import BannerBtn from "../common/bannerBtn";
 import MatchedList from "./MatchedList";
 import ContentBanner from "./ContentBanner";
 import LinkNav from "./LinkNav";
-import SectionDiv from "../home/SectionDiv";
 import CaompanyTagSection from "./CompanyTagSection";
+import ThemeSection from "./ThemeSection";
+import SectionDivider from "../common/divider";
+import FeaturedSection from "./FeaturedSection";
 
 export default function JobsfeedMain(){
     return(
@@ -28,6 +30,13 @@ export default function JobsfeedMain(){
 
             <CaompanyTagSection></CaompanyTagSection>
 
+            <SectionDivider></SectionDivider>
+
+            <ThemeSection></ThemeSection>
+
+            <SectionDivider></SectionDivider>
+
+            <FeaturedSection></FeaturedSection>
 
         </MainPageWrapper>
     )

@@ -1,6 +1,5 @@
 import React from "react";
 import MainHeader from "../../components/common/header/header";
-import HomeMain from "../../components/home/Main";
 import { useRecoilValue } from 'recoil';
 import LoginModal from "../../components/login/LoginModal";
 import { popupRecoilState } from "../../atoms/Popup";
@@ -21,7 +20,7 @@ export default function Jobsfeed(){
             <JobsfeedMain></JobsfeedMain>
 
             <Footer></Footer>
-            
+
             {popup?"":<LoginModal></LoginModal>}
             
         </div>

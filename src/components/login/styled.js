@@ -30,6 +30,12 @@ export const InputStyle=styled.div`
             border-color:#36f;
         }
     }
+    .errormsg{
+        color:#fe415c;
+        bottom:0;
+        margin-top:6px;
+        font-size:12px;
+    }
 `
 
 export const AgreementWrapper=styled.div`

@@ -38,8 +38,31 @@ export default function LoginModal(){
         }
     ]
 
+    const [phone,setPhone]=useState('');
+    const [phoneValid,setPhoneValid]=useState("0");
+    const [isClick,setIsClick]=useState(false);
+
+    const [email,setEmail]=useState('');
+    const [emailValid,setEmailValid]=useState("0");
+
+    const [password,setPassword]=useState('');
+    const [passwordValid,setPasswordValid]=useState("0");
+
+    const [testPw,setTestPw]=useState('');
+
+    const [testValid,setTestValid]=useState('0');
+
     const handleJoin=()=>{
-        setIsJoin(!isJoin);
+        
+        const regex=
+        /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+        if(regex.test(email)){
+            setEmailValid("1");
+            setIsJoin(!isJoin);
+        }else{
+            setEmailValid('2');
+        }
     }
 
     const handleSelect=(e)=>{
@@ -56,6 +79,64 @@ export default function LoginModal(){
                 break;
         }
         
+    }
+
+
+    const handlePhone=(e)=>{
+        setPhone(e.target.value);
+        
+        const regex =/^[0-9]{2,3}[0-9]{3,4}[0-9]{4}/
+
+        if (regex.test(phone)) {
+            setPhoneValid("1");
+            
+        }
+        else{
+            setPhoneValid("2");
+        }
+    }
+
+    const handleEmail=(e)=>{
+        setEmail(e.target.value);
+        const regex=
+        /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+        if(regex.test(email)){
+            setEmailValid("1");
+        }else{
+            setEmailValid('0');
+        }
+
+    }
+
+    const handlePassword=(e)=>{
+        setPassword(e.target.value);
+
+        const regex=
+        /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+
+        if(regex.test(password)){
+            setPasswordValid('1');
+            
+        }else{
+            setPasswordValid('2');
+        }
+    }
+
+    const handleTestPw=(e)=>{
+        setTestPw(e.target.value);
+    }
+
+    const handlePhoneClick=()=>{
+        setIsClick(true);
+    }
+
+    const CheckPassword=()=>{
+        if(password===testPw){
+            setTestValid('1');
+        }else{
+            setTestValid('2');
+        }
     }
 
     return(
@@ -108,22 +189,52 @@ export default function LoginModal(){
                                             </div>
                                         </div>
                                         <div className="phoneNum-input input-body">
-                                            <input name="userPhoneNumber" type="text" placeholder="(예시) 01034567890"></input>
-                                            <button type="button" disabled>
+                                            <input 
+                                                name="userPhoneNumber" type="text" value={phone}
+                                                placeholder="(예시) 01034567890" onChange={handlePhone}></input>
+                                            <button type="button" style={
+                                                phoneValid==="1" 
+                                                ?{color:"#36f",
+                                                background:"none"}
+                                                :{backgroundColor:"#f2f4f7"}
+                                            } onClick={handlePhoneClick}>
                                                 인증번호 받기
                                             </button>
                                         </div>
                                         <div className="code-input input-body">
-                                            <input className="inputCode" type="text" name="code" placeholder="인증번호를 입력해 주세요." disabled></input>
+                                            <input 
+                                                className="inputCode" type="text" 
+                                                name="code" placeholder="인증번호를 입력해 주세요." 
+                                                style={
+                                                    isClick
+                                                    ?{color:"#36f",
+                                                    background:"none"
+                                                    }
+                                                    :{backgroundColor:"#f2f4f7"}}
+                                            ></input>
                                         </div>
+                                        {
+                                            phoneValid=="2"&&phone.length>0
+                                            ?<div className="errormsg">올바른 전화번호를 입력해 주세요.</div>
+                                            :""
+                                        }
+                                        {
+                                            phoneValid==2&&phone.length==0
+                                            ?<div className="errormsg">휴대폰 번호는 필수정보 입니다.</div>
+                                            :""
+                                        }
                                     </div>
                                 </div>
+
                             </InputStyle>
 
                             <InputStyle>    
                                 <label for="userPassword">비밀번호</label>
                                 <div className="input-body">
-                                    <input type="password" name="userPassword" maxlength="16" placeholder="비밀번호를 입력해 주세요." id="userPassword"></input>
+                                    <input 
+                                    type="password" name="userPassword" 
+                                    maxlength="16" placeholder="비밀번호를 입력해 주세요." 
+                                    id="userPassword" onChange={handlePassword}></input>
                                 </div>
                                 <div className="password-guid">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상 입력해 주세요.</div>
                             </InputStyle>
@@ -131,7 +242,10 @@ export default function LoginModal(){
                             <InputStyle>
                                 <label for="userPasswordRepeat">비밀번호 확인</label>
                                 <div className="input-body">
-                                    <input type="password" name="userPasswordRepeat" maxlength="16" placeholder="비밀번호를 다시 한번 입력해 주세요" id="userPasswordRepeat"></input>
+                                    <input 
+                                    type="password" name="userPasswordRepeat" 
+                                    maxlength="16" placeholder="비밀번호를 다시 한번 입력해 주세요" 
+                                    id="userPasswordRepeat" onChange={handleTestPw}></input>
                                 </div>
                             </InputStyle>
 
@@ -164,7 +278,14 @@ export default function LoginModal(){
                                 </div>
 
                             </AgreementWrapper>
+
                         </form>
+                        <div className="submitBtn">
+                            <div className="btn-wrapper">
+                                <button type="submit" onClick={CheckPassword}>회원가입하기</button>
+                            </div>
+                        </div>
+                        
                     </JoinContentBody>
                     :
                     <ContentBody>
@@ -177,8 +298,16 @@ export default function LoginModal(){
                             <InputStyle>
                                 <label for="email">이메일</label>
                                 <div className="input-body">
-                                    <input type="email" placeholder="이메일을 입력해 주세요." className="emailValue"></input>
+                                    <input 
+                                    type="email" placeholder="이메일을 입력해 주세요." 
+                                    className="emailValue" onChange={handleEmail}></input>
                                 </div>
+                                {
+                                    emailValid=="2"
+                                    ?<div className="errormsg">올바른 이메일 형식을 입력해주세요.</div>
+                                    :""
+                                }
+                                
                             </InputStyle>
                             <div className="bottom-wrapper">
                                 <button onClick={handleJoin}>
@@ -219,7 +348,6 @@ export default function LoginModal(){
                         </div>
                     </ContentBody>
                 }
-
 
             </LoginContent>
                         
@@ -342,12 +470,10 @@ const JoinContentBody=styled.div`
         min-width:117px;
         padding:16px 15px 14px;
         border-radius:5px;
-        
         font-weight:700;
         color:#ccc;
-        &:disabled{
-            background-color:#f2f4f7;
-        }
+        border:1px solid #e1e2e3;
+}
     }
     .inputCode{
         &:disabled{
@@ -359,6 +485,30 @@ const JoinContentBody=styled.div`
         bottom:0;
         margin-top:6px;
         font-size:10.5px;
+    }
+    .submitBtn{
+        position:sticky;
+        bottom:0;
+        left:0;
+        right:0;
+    }
+    .btn-wrapper{
+        background-color:#fff;
+        height:70px;
+    }
+    .btn-wrapper>button{
+        background-color:#f2f4f7;
+        color:#cacaca;
+        border-color:transparent;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        width:100%;
+        height:54px;
+        border:0;
+        border-radius:27px;
+        font-size:16px;
+        font-weight:600;
     }
 
 `

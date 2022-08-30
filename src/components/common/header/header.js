@@ -76,6 +76,7 @@ export default function MainHeader(){
     const [isOver,setIsOver]=useState(0);
 
     let width="";
+    let to='';
 
     const handlePopup=()=>{
         setPopup(!popup);
@@ -94,10 +95,12 @@ export default function MainHeader(){
         case "개발":
             list=a;
             width="600px";
+            to="wdList";
             break;
         case "경영·비즈니스":
             list=b;
             width="600px";
+            to="a";
             break;
         case "디자인":
             list=c;
@@ -220,9 +223,16 @@ export default function MainHeader(){
                                     </em>
                                 </Link>
                                 <ul>
+
                                     {categorys.map((list)=>{
-                                        return <CategoryItem name={list}></CategoryItem>
+                                        return (
+                                            <Link to={to}>
+                                                <CategoryItem name={list} to={to}></CategoryItem>
+                                            </Link>
+
+                                        )
                                     })}
+
                                     <li className="category-icon">
                                         <Link to='/'>
                                             <div className="category-banner">

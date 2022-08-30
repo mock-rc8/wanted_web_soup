@@ -1,10 +1,12 @@
 import React from "react";
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 import {useRecoilState} from "recoil";
 import { mouseOverRecoilState } from "../../../atoms/MouseOver";
 import { categoryTitleRecoilState } from "../../../atoms/CategoryTitle";
 
 export default function CategoryItem(props){
+
 
     const [mouseOver,setMouseOver]=useRecoilState(mouseOverRecoilState);
     const [title,setTitle]=useRecoilState(categoryTitleRecoilState);
@@ -16,11 +18,12 @@ export default function CategoryItem(props){
 
     return(
         <Items onMouseOver={handleOver}>
-            <button value={props.name}>
-                <span>
-                    <em>{props.name}</em>
-                </span>
-            </button>
+
+                <button value={props.name}>
+                    <span>
+                        <em>{props.name}</em>
+                    </span>
+                </button>
 
         </Items>
     )

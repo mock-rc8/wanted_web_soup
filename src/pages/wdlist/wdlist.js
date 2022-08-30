@@ -5,8 +5,9 @@ import LoginModal from "../../components/login/LoginModal";
 import { popupRecoilState } from "../../atoms/Popup";
 import $ from 'jquery';
 import Footer from "../../components/common/footer";
+import WdListMain from "../../components/wdlist/Main";
 
-export default function Jobsfeed(){
+export default function WdList(){
     const popup=useRecoilValue(popupRecoilState);
 
     {popup?$('body').removeClass('fixed'):$('body').addClass('fixed')}
@@ -15,7 +16,8 @@ export default function Jobsfeed(){
         <div>
             <MainHeader></MainHeader>
             <div style={{height:"50px"}}></div>
-            
+
+            <WdListMain></WdListMain>
 
             <Footer></Footer>
 

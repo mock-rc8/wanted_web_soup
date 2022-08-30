@@ -7,15 +7,13 @@ import SliderList from './SliderList'
 
 export default function SliderBanner(){
     var settings={
-        className:"center",
-        centerPadding:"51px",
         centerMode:true,
         dots:false,
         infinite:true,
-        slidesToShow:1.7,
+        slidesToShow:2,
         slidesToScroll:1,
         autoplay:false,
-        autoplaySpeed:5000,
+        autoplaySpeed:1000,
         pauseOnHover:true,
         prevArrow:(
             <Btn>
@@ -103,11 +101,11 @@ const StyledSlider=styled(Slider)`
 
     }
     .slick-track{
-        width:54090px;
+        width:54090px!important;
 
     }
     .slick-slide{
-        width:100%;
+        width:1060px!important;
         padding:0 12px;
         box-sizing:content-box;
     }

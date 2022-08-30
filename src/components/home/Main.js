@@ -217,47 +217,6 @@ const MainPageWrapper=styled.div`
     background-color:#fff;
 `
 
-//TopBanner
-const TopBanner=styled.div`
-    position:relative;
-    overflow:hidden;
-    height:304.969px;
-
-`
-const StyledSlider=styled(Slider)`
-    margin-bottom:0;
-    .slick-prev::before,
-    .slick-next::before{
-        opacity:0;
-        display:none;
-    }
-    .slick-prev{
-        left:300px;
-    }
-    .slick-next{
-        right:300px;
-    }
-
-    .slick-list{
-        padding:0 50px;
-
-    }
-    .slick-track{
-        width:54090px;
-
-    }
-    .slick-slide{
-        width:100%;
-        padding:0 12px;
-        box-sizing:content-box;
-    }
-    .slick-slide>div{
-        position:relative;
-        width:1060px;
-        margin:0
-    }
-`
-
 //ContentSection-career
 const SectionTitle=styled.div`
     text-align:center;

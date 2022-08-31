@@ -143,7 +143,7 @@ export default function MainHeader(){
                                 src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Ficon-menu.png&w=undefined&q=75">
                                 </img>
                             </button>
-                            <Link to='/'>
+                            <Link to='/' className="icon-link">
                                 <img alt="iconimg" className="icon" src="https://raw.githubusercontent.com/hanghae99-Wanted-Clone-Coding/Wanted-Client-Application/develop/src/assets/wanted-logo.png"></img>
                             </Link>                        
                         </div>
@@ -315,8 +315,11 @@ const MainBarLeft=styled.div`
         height:14px;
         object-fit:contain;
     }
+    .icon-link{
+        margin-top:3px;
+    }
     .icon{
-        height:21px;
+        height:18px;
     }
 `
 const MainBarCenter=styled.ul`

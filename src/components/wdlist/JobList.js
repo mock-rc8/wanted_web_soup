@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import BottomBanner from "./BottomBanner";
 import JobListContent from "./JobListContent";
 import JobListNav from "./JobListNav";
 
@@ -10,7 +11,9 @@ export default function JobList(){
             <JobListNav></JobListNav>
 
             <JobListContent></JobListContent>
-            
+
+            <BottomBanner></BottomBanner>
+
         </JobListWrapper>
     )
 }

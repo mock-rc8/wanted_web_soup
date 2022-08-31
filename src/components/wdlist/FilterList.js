@@ -110,6 +110,7 @@ const FilterListWrapper=styled.div`
     }
 
     ul{
+        z-index:98;
         position:absolute;
         top:39px;
         left:0;

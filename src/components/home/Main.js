@@ -1,4 +1,4 @@
-import React from"react";
+import React, { useEffect, useState } from"react";
 import styled from "styled-components";
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
@@ -14,9 +14,35 @@ import SliderBanner from "../common/SliderBanner";
 import QuestionBtn from "../common/questionBtn";
 import { ContentSection } from "../styled";
 import { SectionWrapper } from "../styled";
+import axios from "axios";
 
 
 export default function HomeMain(){
+    const category=
+    [
+        "IT/기술","리더십","인간관계","커리어고민","회사생활","라이프스타일","조직문화","취업/이직",
+        "서비스기획","브랜딩","개발","UX/UI","HR","콘텐츠 제작","마케팅","노무","데이터","경영/전략","MD","디자인"
+    ]
+    const url=`http://www.pangmin.shop/app/mains`
+
+    const [contents,setContents]=useState([]);
+
+    const search=async()=>{
+        try{
+            const data=await axios({
+                method:'get',
+                url:url,
+            })
+            setContents(data.data.result[0]);
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(()=>{
+        search()
+    },[])
 
     return(
         <MainPageWrapper>
@@ -45,26 +71,13 @@ export default function HomeMain(){
                                 </button>
                             </div>
                             <div className="category-scroll">
-                                <button className="category-btn">취업/이직</button>
-                                <button className="category-btn">인간관계</button>
-                                <button className="category-btn">회사생활</button>
-                                <button className="category-btn">커리어고민</button>
-                                <button className="category-btn">리더십</button>
-                                <button className="category-btn">IT/기술</button>
-                                <button className="category-btn">조직문화</button>
-                                <button className="category-btn">라이프스타일</button>
-                                <button className="category-btn">브랜딩</button>
-                                <button className="category-btn">개발</button>
-                                <button className="category-btn">UX/UI</button>
-                                <button className="category-btn">HR</button>
-                                <button className="category-btn">콘텐츠 제작</button>
-                                <button className="category-btn">마케팅</button>
-                                <button className="category-btn">서비스기획</button>
-                                <button className="category-btn">노무</button>
-                                <button className="category-btn">데이터</button>
-                                <button className="category-btn">경영/전략</button>
-                                <button className="category-btn">MD</button>
-                                <button className="category-btn">디자인</button>
+                                {
+                                    category.map((list)=>{
+                                        return(
+                                            <button className="category-btn" value={list}>{list}</button>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                         <button className="category-more-btn">
@@ -75,14 +88,14 @@ export default function HomeMain(){
                     </SectionCategory>
 
                     <SectionContent>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
-                        <ContentCard></ContentCard>
+                        {
+                            contents.map((list)=>{
+                                return(
+                                    <ContentCard key={list.contentsIdx} title={list.title} src={list.thumbnailUrl} type={list.type}
+                                    creator={list.creator} introduction={list.introduction} link={list.link}></ContentCard>
+                                )
+                            })
+                        }
                     </SectionContent>
 
                     <SectionMoreBtn>
@@ -120,7 +133,7 @@ export default function HomeMain(){
             </CreaterBanner>
 
             <ContentSection>
-                <SectionDiv 
+                <SectionDiv
                 title={"3분만에 읽는 Wanted+ 아티클"} type={"아티클"}
                 ></SectionDiv>
             </ContentSection>
@@ -339,6 +352,13 @@ const SectionCategory=styled.div`
         margin-top:7px;
         margin-left:4px;
         cursor:pointer;
+        &:first-of-type{
+            color:#36f;
+            outline:none;
+            font-weight:700;
+            background-color:#fff;
+            border:1px solid #36f;
+        }
     }
 
     .category-more-btn{

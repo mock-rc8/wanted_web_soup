@@ -7,8 +7,30 @@ import { Link } from "react-router-dom";
 import ContentSliderList from "./ContentSliderList";
 import { SectionPrev } from "../common/ArrowButton";
 import { SectionNext } from "../common/ArrowButton";
+import dummy from './eventlist.json';
+import axios from "axios";
+import EventSliderList from "./EventSliderList";
 
 export default function SectionDiv(props){
+    const url=`http://www.pangmin.shop/app/mains`
+
+    const [articles,setArticles]=useState([]);
+    const [vods,setVods]=useState([]);
+
+    const search=async()=>{
+        try{
+            const data=await axios({
+                method:'get',
+                url:url,
+            })
+            setArticles(data.data.result[1]);
+            setVods(data.data.result[2]);
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     const num=props.contentNum;
 
     const [isNum, setIsNum]=useState(false);
@@ -29,8 +51,10 @@ export default function SectionDiv(props){
         autoplay:false
     }
     useEffect(()=>{
+        search()
         {num==2?setIsNum(true):setIsNum(false)};
-    })
+
+    },[])
 
     return(
         <SectionWrapper>
@@ -53,22 +77,49 @@ export default function SectionDiv(props){
             </SectionHeader>
 
             <SectionContentList style={isNum?{display:"none"}:{display:"block"}}>
-                <ContentSlider {...ContentSettings}>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2346%2Fce1dc609.jpg&w=800&q=75" t="c"></ContentSliderList>
+                {
+                    props.type==="VOD"
+                    ?
+                    <ContentSlider {...ContentSettings}>
+                        {
+                            vods.map((item)=>{
+                                return(
+                                    <ContentSliderList 
+                                    title={item.title} url={item.thumbnailUrl} type={"vod"}
+                                    link={item.link} introduction={item.introduction} name={item.name}
+                                    ></ContentSliderList>
+                                )
+                            })
+                        }
+                    </ContentSlider>
+                    :
+                    <ContentSlider {...ContentSettings}>
+                    {
+                        articles.map((item)=>{
+                            return(
+                                <ContentSliderList type={"article"}
+                                title={item.title} tag={item.tag1} url={item.thumbnailUrl}
+                                link={item.link} 
+                                ></ContentSliderList>
+                            )
+                        })
+                    }
                 </ContentSlider>
+                }
+
             </SectionContentList>
 
             <SectionEventList style={isNum?{display:"block"}:{display:"none"}}> 
                 <ContentSlider {...TwoSettings}>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
-                    <ContentSliderList src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2207%2Fca78caa5.jpg&w=1200&q=100" t="e"></ContentSliderList>
+                    {
+                        dummy.map((item)=>{
+                            return(
+                                <EventSliderList date={item.date}
+                                title={item.title} src={item.src} link={item.link}></EventSliderList>
+                            )
+                            
+                        })
+                    }
                 </ContentSlider>
             </SectionEventList>
 

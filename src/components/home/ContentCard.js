@@ -1,26 +1,28 @@
 import React from"react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-export default function ContentCard(){
+export default function ContentCard(props){
+    let profileUrl;
+
+    {
+        props.type===1
+        ?profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fwanted-public.s3.ap-northeast-2.amazonaws.com%2Fyoutube_opengraph.png&w=60&q=90"
+        :profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fstatic%2Ficon%2Fios%2Ficon120.png&w=60&q=90"
+    }
+
     return(
         <ContentCardItem>
-            <Link to="/">
+            <a href={props.Link}>
                 <div className="card-thumbnail">
-                    <img className="thumbnail-img" src="https://image.wanted.co.kr/optimize?src=http%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F9NTm%2Fimage%2FyiReME33-YnD4fzmIEKXcbC-roI.png&w=500&q=75"></img>
+                    <img className="thumbnail-img" src={props.src}></img>
                 </div>
-                <p className="card-title">신임리더의 실패가 흔한 이유</p>
-                <p className="card-info">
-                "있으나&nbsp;마나한&nbsp;무능한&nbsp;팀장때문에&nbsp;내가&nbsp;실질적인&nbsp;팀장&nbsp;역할을&nbsp;해왔다" 하는&nbsp;이들을&nbsp;흔하게&nbsp;본다. 핵심인재라&nbsp;육성되고, 
-                공공연히 차기 리더로&nbsp;인식되거나 가장&nbsp;전문가라&nbsp;하는&nbsp;이들이&nbsp;주로&nbsp;해당된다. 
-                막말로 "내가 발로 해도 저 인간보단 잘하겠다"하던 이들도&nbsp;팀장&nbsp;첫해엔&nbsp;온갖&nbsp;멘붕과&nbsp;시행착오를&nbsp;겪는다. 
-                바라던&nbsp;리더&nbsp;자리였건만&nbsp;왜&nbsp;이리&nbsp;회의는&nbsp;많고, 왜&nbsp;이리&nbsp;이슈는
-                </p>
+                <p className="card-title">{props.title}</p>
+                <p className="card-info">{props.indroduction}</p>
                 <div className="card-profile">
-                    <img className="profile-img" src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fstatic%2Ficon%2Fios%2Ficon120.png&w=60&q=90" alt="profileimg"></img>
-                    <p className="profile-name">ssoo</p>
+                    <img className="profile-img" src={profileUrl} alt="profileimg"></img>
+                    <p className="profile-name">{props.creator}</p>
                 </div>
-            </Link>
+            </a>
         </ContentCardItem>
     )
 }

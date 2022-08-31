@@ -10,6 +10,7 @@ import imgList from "./db/imgList.json";
 import dummy from "./db/list.json";
 
 export default function ThemeSection(){
+
     const TwoSettings={
         dots:false,
         infinite:true,
@@ -19,6 +20,7 @@ export default function ThemeSection(){
     }
 
     const list=dummy["테마로 모아보는 요즘 채용"];
+
 
     return(
         <SectionWrapper style={style}>

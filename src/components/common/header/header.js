@@ -161,7 +161,7 @@ export default function MainHeader(){
                             <Link to='/' className="link">이력서</Link>
                         </li>
                         <li className="cartegoryList">
-                            <Link to='/' className="link">커뮤니티</Link>
+                            <Link to='/community' className="link">커뮤니티</Link>
                             <em>
                                 <svg width="18" height="11" viewBox="0 0 18 11">
                                     <g fillRule="evenodd">

@@ -158,7 +158,7 @@ export default function MainHeader(){
                             <Link to='/' className="link">직군별 연봉</Link>
                         </li>
                         <li className="cartegoryList">
-                            <Link to='/' className="link">이력서</Link>
+                            <Link to='/cv' className="link">이력서</Link>
                         </li>
                         <li className="cartegoryList">
                             <Link to='/community' className="link">커뮤니티</Link>

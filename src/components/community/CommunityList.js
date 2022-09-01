@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SectionCategory from "../common/SectionCategory";
 import CommunityItem from "./CommunityItem";
 import dummy from "./db/topPicklist.json";
 import PostItem from "./PostItem";
+import axios from "axios";
 
 export default function CommunityList(){
     const category=[
@@ -15,7 +16,29 @@ export default function CommunityList(){
     const tag=[
         "개발","MD","커리어고민","콘텐츠 제작","노무","서비스기획","라이프스타일"
     ]
+
+    const url=`http://www.pangmin.shop/app/communities`
+    const [content,setContents]=useState([]);
+
+    const search=async()=>{
+        try{
+            const data=await axios({
+                method:'get',
+                url:url,
+            })
+            setContents(data.data.result);
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(()=>{
+        search()
+    },[])
+
     return(
+
         <ListContent>
             <div className="categories-wrapper">
                 <SectionCategory list={category} className="category"></SectionCategory>
@@ -77,10 +100,20 @@ export default function CommunityList(){
                                 </svg>
                             </span>
                         </div>
+
                         <Divider></Divider>
                     </div>
-                    <PostItem></PostItem>
-                    <PostItem></PostItem>
+                    {
+                        content.map((list)=>{
+                            return(
+                                <PostItem 
+                                name={list.nickname} career={list.career} jobGroup={list.jobGroupIdx}
+                                title={list.title} text={list.content} src={list.profileUrl}
+                                likeNum={list.likeNum} commentNum={list.commentNum} url={list.imgUrl}
+                                ></PostItem>
+                            )
+                        })
+                    }
                 </RecommendPostView>
 
             </div>

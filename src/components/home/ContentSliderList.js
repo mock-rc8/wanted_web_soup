@@ -16,7 +16,7 @@ export default function ContentSliderList(props){
                     ?
                     <div className="article">
                         <p className="article-title">{props.title}</p>
-                        <p className="article-category">{props.tag}</p>
+                        <p className="article-category">#{props.tag}</p>
                     </div>
                     :
                     <div className="article">

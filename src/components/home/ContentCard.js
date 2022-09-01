@@ -17,7 +17,7 @@ export default function ContentCard(props){
                     <img className="thumbnail-img" src={props.src}></img>
                 </div>
                 <p className="card-title">{props.title}</p>
-                <p className="card-info">{props.indroduction}</p>
+                <p className="card-info">{props.introduction}</p>
                 <div className="card-profile">
                     <img className="profile-img" src={profileUrl} alt="profileimg"></img>
                     <p className="profile-name">{props.creator}</p>
@@ -56,7 +56,7 @@ const ContentCardItem=styled.li`
         margin:17px 0 8px;
         color:#333;
         line-height:24px;
-        font-size:16px;
+        font-size:14px;
         font-weight:700;
         text-overflow:ellipsis;
         overflow:hidden;

@@ -1,25 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Divider } from "./CommunityList";
 
-export default function PostItem(){
+export default function PostItem(props){
+    const [jobGroup,setJobGroup]=useState(props.jobGroup);
+    const [jobColor,setJobColor]=useState("");
+
+    switch(jobGroup){
+        case 1:
+            setJobGroup("개발");
+            setJobColor("#8958fa");
+            break;
+    }
     return(
-        <PostItemWrapper>
+        <PostItemWrapper href={props.url}>
 
             <div className="item-header">
                 <div className="author-box">
                     <div className="author-imgWrapper">
                         <div className="author-img">
-                            <img src="https://static.wanted.co.kr/images/avatars/2115252/126a3b26.jpg"></img>
+                            <img src={props.src}></img>
                         </div>
                     </div>
                     <button className="author-info">
                         <div className="userInfo">
-                            <div className="info-userName">전수빈</div>
+                            <div className="info-userName">{props.name}</div>
                             <div className="info-carrerTag">
-                                <CarrerTag>개발</CarrerTag>
-                                <CarrerTag>2년차</CarrerTag>
+                                <CarrerTag color={jobColor}>{jobGroup}</CarrerTag>
+                                <CarrerTag color="#888">{props.career}</CarrerTag>
                             </div>
                         </div>
                         <span className="createTime">12분전</span>
@@ -28,15 +36,15 @@ export default function PostItem(){
             </div>
 
             <ItemBody>
-                <h3 className="item-title">데이터1</h3>
-                <p className="item-content">안녕하세요.저는</p>
+                <h3 className="item-title">{props.title}</h3>
+                <p className="item-content">{props.text}</p>
                 <div className="item-tagList">
                     <TagList tag="취업/이직"></TagList>
                     <TagList tag="HR"></TagList>
                 </div>
                 <div className="stateBtn">
-                    <LikeBtn></LikeBtn>
-                    <CommentBtn></CommentBtn>
+                    <LikeBtn num={props.likeNum}></LikeBtn>
+                    <CommentBtn num={props.commentNum}></CommentBtn>
                 </div>
             </ItemBody>
 
@@ -114,7 +122,7 @@ const PostItemWrapper=styled.a`
 `
 const CarrerTag=styled.div`
     margin-right:4px;
-    color:#8958fa;
+    color:${props=>props.color};
     display:flex;
     align-items:center;
     padding:0 4px;
@@ -178,7 +186,10 @@ const TagListBtn=styled.button`
     font-weight:400;
     color:#888;
     height:26px;
-
+    margin-left:10px;
+    &:first-of-type{
+        margin-left:0;
+    }
 `
 
 const LikeBtn=(props)=>{
@@ -187,7 +198,7 @@ const LikeBtn=(props)=>{
             <svg width="18" height="18" viewBox="0 0 18 18" fill="#666">
                 <path d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
             </svg>
-            <span>1</span>
+            <span>{props.num}</span>
         </BtnWrapper>
     )
 }
@@ -198,7 +209,7 @@ const CommentBtn=(props)=>{
             <svg width="18" height="18" viewBox="0 0 18 18" fill="#666">
                 <path d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
             </svg>
-            <span>1</span>
+            <span>{props.num}</span>
         </BtnWrapper>
     )
 }
@@ -207,4 +218,15 @@ const BtnWrapper=styled.div`
     display:flex;
     color:#666;
     align-items:center;
+    svg{
+        color:#666;
+    }
+    span{
+        color:#666;
+        font-size:12px;
+        margin-left:4px;
+        padding:0.3em 0 0;
+        line-height:100%;
+        font-weight:700;
+    }
 `

@@ -37,6 +37,11 @@ export default function CommunityList(){
         search()
     },[])
 
+
+    const handleClick=(e)=>{
+        window.location.replace('./write')
+    }
+
     return(
 
         <ListContent>
@@ -73,7 +78,7 @@ export default function CommunityList(){
                     </div>
                 </section>
                 <section className="postWrite-btn">
-                    <button>
+                    <button onClick={handleClick}>
                         커리어와 라이프스타일에 대해 자유롭게 이야기 해주세요!
                         <svg width="24" height="24">
                             <path d="M17.21 2.23a.75.75 0 0 1 1.07-.01l3.5 3.5a.75.75 0 0 1 .011 1.05l-12 12.5a.75.75 0 1 1-1.082-1.04l8.062-8.398-2.451-2.451L4.5 17.553V20h2.75a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75v-3.5a.75.75 0 0 1 .21-.52zm.55 1.59-2.397 2.482 2.447 2.447 2.39-2.488-2.44-2.441z"></path>

@@ -10,6 +10,8 @@ import { SectionNext } from "../common/ArrowButton";
 import dummy from './eventlist.json';
 import axios from "axios";
 import EventSliderList from "./EventSliderList";
+import articlelist from "./db/articlelist.json";
+import vodlist from "./db/vodlist.json"
 
 export default function SectionDiv(props){
     const url=`http://www.pangmin.shop/app/mains`
@@ -78,11 +80,11 @@ export default function SectionDiv(props){
 
             <SectionContentList style={isNum?{display:"none"}:{display:"block"}}>
                 {
-                    props.type==="VOD"
+                    props.type==="vod"
                     ?
                     <ContentSlider {...ContentSettings}>
                         {
-                            vods.map((item)=>{
+                            vodlist.map((item)=>{
                                 return(
                                     <ContentSliderList 
                                     title={item.title} url={item.thumbnailUrl} type={"vod"}
@@ -95,7 +97,7 @@ export default function SectionDiv(props){
                     :
                     <ContentSlider {...ContentSettings}>
                     {
-                        articles.map((item)=>{
+                        articlelist.map((item)=>{
                             return(
                                 <ContentSliderList type={"article"}
                                 title={item.title} tag={item.tag1} url={item.thumbnailUrl}

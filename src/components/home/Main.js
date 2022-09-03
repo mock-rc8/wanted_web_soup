@@ -16,6 +16,7 @@ import { ContentSection } from "../styled";
 import { SectionWrapper } from "../styled";
 import axios from "axios";
 import SectionCategory from '../common/SectionCategory';
+import contentdummy from './db/sectioncontentlist.json';
 
 export default function HomeMain(){
     const category=
@@ -63,7 +64,7 @@ export default function HomeMain(){
 
                     <SectionContent>
                         {
-                            contents.map((list)=>{
+                            contentdummy.map((list)=>{
                                 return(
                                     <ContentCard key={list.contentsIdx} title={list.title} src={list.thumbnailUrl} type={list.type}
                                     creator={list.creator} introduction={list.introduction} link={list.link}></ContentCard>
@@ -108,7 +109,7 @@ export default function HomeMain(){
 
             <ContentSection>
                 <SectionDiv
-                title={"3분만에 읽는 Wanted+ 아티클"} type={"아티클"}
+                title={"3분만에 읽는 Wanted+ 아티클"} type={"article"}
                 ></SectionDiv>
             </ContentSection>
 
@@ -116,7 +117,7 @@ export default function HomeMain(){
 
             <ContentSection>
                 <SectionDiv
-                title={"직장인을 위한 Wanted+ VOD"} type={"VOD"}
+                title={"직장인을 위한 Wanted+ VOD"} type={"vod"}
                 ></SectionDiv>
             </ContentSection>
 

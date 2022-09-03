@@ -2,7 +2,6 @@ import React from"react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from "react-router-dom";
 
 export default function ContentSliderList(props){
     return(
@@ -16,7 +15,7 @@ export default function ContentSliderList(props){
                     ?
                     <div className="article">
                         <p className="article-title">{props.title}</p>
-                        <p className="article-category">#{props.tag}</p>
+                        <p className="article-category">{props.tag}</p>
                     </div>
                     :
                     <div className="article">
@@ -40,6 +39,9 @@ const ListItem=styled.div`
         padding-left:0;
     }
 
+    .article{
+        margin:14px 0 0;
+    }
     img{
         position:absolute;
         width:100%;
@@ -58,11 +60,9 @@ const ListItem=styled.div`
         margin:5px 0;
         font-weight:600;
         color:#333;
-
     }
     .article-title{
-        margin-top:17px;
-        font-size:16px;
+        font-size:14px;
         overflow:hidden;
         font-weight:700;
         line-height:1.5;

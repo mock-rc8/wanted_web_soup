@@ -5,6 +5,7 @@ import CommunityItem from "./CommunityItem";
 import dummy from "./db/topPicklist.json";
 import PostItem from "./PostItem";
 import axios from "axios";
+import postlist from './db/postitemlist.json';
 
 export default function CommunityList(){
     const category=[
@@ -109,11 +110,11 @@ export default function CommunityList(){
                         <Divider></Divider>
                     </div>
                     {
-                        content.map((list)=>{
+                        postlist.map((list)=>{
                             return(
                                 <PostItem 
-                                name={list.nickname} career={list.career} jobGroup={list.jobGroupIdx}
-                                title={list.title} text={list.content} src={list.profileUrl}
+                                name={list.name} career={list.career} jobGroup={list.jobGroupIdx} tag1={list.tag1} tag2={list.tag2}
+                                title={list.title} text={list.content} src={list.profileUrl} date={list.date}
                                 likeNum={list.likeNum} commentNum={list.commentNum} url={list.imgUrl}
                                 ></PostItem>
                             )

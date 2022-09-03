@@ -4,11 +4,18 @@ import styled from "styled-components";
 export default function ContentCard(props){
     let profileUrl;
 
-    {
-        props.type===1
-        ?profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fwanted-public.s3.ap-northeast-2.amazonaws.com%2Fyoutube_opengraph.png&w=60&q=90"
-        :profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fstatic%2Ficon%2Fios%2Ficon120.png&w=60&q=90"
+    switch(props.type){
+        case "1":
+            profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fwanted-public.s3.ap-northeast-2.amazonaws.com%2Fyoutube_opengraph.png&w=60&q=90";
+            break;
+        case "2":
+            profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fstatic%2Ficon%2Fios%2Ficon120.png&w=60&q=90";
+            break;
+        case "3":
+            profileUrl="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Ffavicon%2F144x144.png&w=60&q=90";
+            break;
     }
+
 
     return(
         <ContentCardItem>

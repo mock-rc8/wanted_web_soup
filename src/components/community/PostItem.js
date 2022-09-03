@@ -11,6 +11,10 @@ export default function PostItem(props){
             setJobGroup("개발");
             setJobColor("#8958fa");
             break;
+        case 2:
+            setJobGroup("디자인");
+            setJobColor("#008ae2");
+            break;
     }
     return(
         <PostItemWrapper href={props.url}>
@@ -30,7 +34,7 @@ export default function PostItem(props){
                                 <CarrerTag color="#888">{props.career}</CarrerTag>
                             </div>
                         </div>
-                        <span className="createTime">12분전</span>
+                        <span className="createTime">{props.date}</span>
                     </button>
                 </div>
             </div>
@@ -39,8 +43,8 @@ export default function PostItem(props){
                 <h3 className="item-title">{props.title}</h3>
                 <p className="item-content">{props.text}</p>
                 <div className="item-tagList">
-                    <TagList tag="취업/이직"></TagList>
-                    <TagList tag="HR"></TagList>
+                    <TagList tag={props.tag1}></TagList>
+                    <TagList tag={props.tag2}></TagList>
                 </div>
                 <div className="stateBtn">
                     <LikeBtn num={props.likeNum}></LikeBtn>
@@ -147,7 +151,7 @@ const ItemBody=styled.div`
         text-overflow:ellipsis;
     }
     .item-content{
-        margin-bottom:10px;
+        margin-bottom:13px;
         min-height:40px;
         font-size:14px;
         color:#666;
@@ -157,7 +161,8 @@ const ItemBody=styled.div`
         white-space: break-spaces;
         word-break: break-all;
         overflow: hidden;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
+        display: -webkit-box;
     }
     .item-tagList{
         margin-bottom:21px;
@@ -168,6 +173,7 @@ const ItemBody=styled.div`
     }
 `
 const TagList=(props)=>{
+    console.log(props.tag);
     return(
         <TagListBtn>
             {props.tag}
